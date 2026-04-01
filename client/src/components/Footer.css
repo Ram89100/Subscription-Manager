@@ -1,0 +1,39 @@
+.app-footer {
+  background: linear-gradient(135deg, #1a2332 0%, #0f1419 100%);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 2rem 2rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+}
+
+.footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-content p {
+  margin: 0;
+  font-size: 0.95em;
+  font-weight: 500;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-socials a {
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+  font-size: 1.1em;
+}
+
+.footer-socials a:hover {
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
