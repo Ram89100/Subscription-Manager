@@ -4,6 +4,8 @@ import { SubscriptionForm } from '../components/SubscriptionForm';
 import { SubscriptionList } from '../components/SubscriptionList';
 import { EditModal } from '../components/EditModal';
 import { Dashboard } from '../components/Dashboard';
+import QuickLogUsage from '../components/QuickLogUsage';
+import AIInsights from '../components/AIInsights';
 import '../App.css';
 
 function DashboardPage() {
@@ -52,6 +54,9 @@ function DashboardPage() {
       <div className="card">
         <SubscriptionForm onSubscriptionAdded={fetchSubscriptions} />
       </div>
+      
+      <QuickLogUsage subscriptions={subscriptions.filter(sub => sub.status === 'ACTIVE')} />
+      
       <div className="card">
         <SubscriptionList
           subscriptions={subscriptions}
@@ -60,6 +65,7 @@ function DashboardPage() {
         />
       </div>
 
+      <AIInsights />
     
       <div className="card dashboard-card">
         <Dashboard subscriptions={subscriptions} />
