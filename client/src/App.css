@@ -428,15 +428,117 @@ select:focus {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+  transition: all 0.3s ease;
 }
 
-.auth-form button:hover {
+.auth-form button:hover:not(:disabled) {
   background: linear-gradient(135deg, var(--success-color-hover) 0%, #047857 100%);
   box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
   transform: translateY(-2px);
 }
 
-/* Estilos da Navbar */
+.auth-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Password Input Wrapper */
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  z-index: 1;
+  margin-bottom: 0.5rem;
+}
+
+.password-input-wrapper input {
+  width: 100%;
+  padding-right: 2.8rem;
+  flex: 1;
+}
+
+.toggle-password {
+  position: absolute !important;
+  right: 10px !important;
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  font-size: 1.1rem !important;
+  padding: 0.5rem !important;
+  color: var(--text-secondary) !important;
+  transition: all 0.2s ease !important;
+  box-shadow: none !important;
+  transform: none !important;
+  z-index: 2 !important;
+  width: auto !important;
+  margin-top: 0 !important;
+  font-weight: normal !important;
+  border-radius: 4px !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+.toggle-password:hover {
+  transform: scale(1.1) !important;
+  color: var(--primary-color) !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.toggle-password:active {
+  transform: scale(0.95) !important;
+  background: none !important;
+}
+
+.password-requirements {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+  z-index: 0;
+  position: relative;
+}
+
+.requirements-header {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.requirements-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.requirements-list li {
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.requirements-list li.unmet {
+  color: #ef4444;
+}
+
+.requirements-list li.met {
+  color: #10b981;
+  font-weight: 500;
+}
+
+
 .navbar {
   display: flex;
   justify-content: space-between;

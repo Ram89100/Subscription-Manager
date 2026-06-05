@@ -17,7 +17,7 @@ export const SubscriptionList: React.FC<SubscriptionListProps> = ({ subscription
           <li key={sub.id} className="subscription-item">
             <span className="subscription-name">
               <img
-                src={sub.service.logoUrl}
+                src={sub.service.logo_url}
                 alt={`${sub.service.name} logo`}
                 className="subscription-logo"
               />
@@ -31,10 +31,10 @@ export const SubscriptionList: React.FC<SubscriptionListProps> = ({ subscription
               })}
             </span>
 
-            <span className="subscription-category">{sub.service.category.name}</span>
+            <span className="subscription-category">{sub.service.category?.name}</span>
 
             <span className="subscription-date">
-              Renews on: {new Date(sub.renewalDate).toLocaleDateString()}
+              Renews on: {new Date(sub.renewal_date).toLocaleDateString()}
             </span>
 
             <div className="btn-group">

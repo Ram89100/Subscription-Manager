@@ -10,7 +10,7 @@ interface DashboardProps {
   subscriptions: Subscription[];
 }
 
-// Função auxiliar para gerar cores consistentes para as categorias
+
 const generateCategoryColor = (categoryName: string) => {
   let hash = 0;
   for (let i = 0; i < categoryName.length; i++) {
@@ -21,28 +21,27 @@ const generateCategoryColor = (categoryName: string) => {
   return `#${color}`;
 };
 
-// Componente que exibe o dashboard com o resumo mensal e gráfico
+
 export const Dashboard: React.FC<DashboardProps> = ({ subscriptions }) => {
   const [viewMode, setViewMode] = useState<ViewMode>('service');
 
-  // Preparando os dados para o gráfico
   const { chartData, totalCost } = useMemo(() => {
     const total = subscriptions.reduce((sum, sub) => sum + sub.price, 0);
 
     let data;
 
     if (viewMode === 'service') {
-      // LÓGICA DE AGRUPAMENTO POR SERVIÇO
+     
       data = {
         labels: subscriptions.map(sub => sub.service.name),
         datasets: [{
           data: subscriptions.map(sub => sub.price),
-          backgroundColor: subscriptions.map(sub => sub.service.brandColor),
+          backgroundColor: subscriptions.map(sub => sub.service.brand_color),
           borderColor: '#1a1a1a', borderWidth: 2, cutout: '70%',
         }],
       };
     } else {
-      // LÓGICA DE AGRUPAMENTO POR CATEGORIA
+    
       const costsByCategory = subscriptions.reduce((acc, sub) => {
         const categoryName = sub.service.category.name;
         if (!acc[categoryName]) {
@@ -65,7 +64,6 @@ export const Dashboard: React.FC<DashboardProps> = ({ subscriptions }) => {
     return { chartData: data, totalCost: total };
   }, [subscriptions, viewMode]);
 
-  // Callback para formatar o tooltip
   const tooltipLabelCallback = (context: TooltipItem<'doughnut'>) => {
     const label = context.label || '';
     const value = context.parsed;
@@ -75,7 +73,6 @@ export const Dashboard: React.FC<DashboardProps> = ({ subscriptions }) => {
     return `${label}: ${formattedValue} (${percentage}%)`;
   };
 
-  // Configurações do gráfico
   const chartOptions: ChartOptions<'doughnut'> & { plugins: { centerText?: { display: boolean, text: string } } } = {
     responsive: true,
     maintainAspectRatio: false,
